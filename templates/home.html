@@ -1,0 +1,57 @@
+{% extends "layout.html" %} {% block content %}
+
+<!-- row -->
+<div class="row" id="content">
+
+    <!-- single course -->
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="course">
+            <a href="#" class="course-img">
+                <img src="{{ url_for('static', filename='img/angel.jpg') }}">
+            </a>
+            <a class="course-title" href="#">Angel Beats</a>
+
+        </div>
+    </div>
+    <!-- /single course -->
+
+    <!-- single course -->
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="course">
+            <a href="#" class="course-img">
+                <img src="{{ url_for('static', filename='img/clannad.jpg') }}">
+            </a>
+            <a class="course-title" href="#">Clannad</a>
+
+        </div>
+    </div>
+    <!-- /single course -->
+
+    <!-- single course -->
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="course">
+            <a href="#" class="course-img">
+                <img src="{{ url_for('static', filename='img/high.jpg') }}">
+            </a>
+            <a class="course-title" href="#">High school</a>
+
+        </div>
+    </div>
+    <!-- /single course -->
+
+    <!-- single course -->
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="course">
+            <a href="#" class="course-img">
+                <img src="{{ url_for('static', filename='img/dbsuper.jpg') }}">
+            </a>
+            <a class="course-title" href="#">Dragon Ball Super</a>
+
+        </div>
+    </div>
+    <!-- /single course -->
+
+
+</div>
+
+{% endblock %}
