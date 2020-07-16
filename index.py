@@ -1,16 +1,19 @@
-from flask import Flask, render_template, request, jsonify, Response
-from templates import db_format
+from flask import Flask, render_template, request, jsonify, Response, redirect
+from templates import db_format, forms
 import database
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson import json_util
 from bson.objectid import ObjectId
 import json
 
-app = Flask(__name__)
 
-@app.route('/') 
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'x\x02\x02\xc7\xbdAS\xd3\x02\xac{\xec\xa5\xffA\xb1g\xe57k\x80\x0c\x80\xc7\xf4K\x8b\xbe\xf4\x08\x98\xf9'
+
+@app.route('/', methods=['GET']) 
 def home():
-    return render_template('home.html')
+    cards = database.mongo.db.anime.find()
+    return render_template('home.html', cards = cards)
 
 @app.route('/video', methods = ['GET'])
 def video():
@@ -18,7 +21,7 @@ def video():
     cards = database.mongo.db.anime.find()
     return render_template('video.html', cards = cards)
 
-@app.route('/anime', methods=['GET'])
+@app.route('/animes', methods=['GET'])
 def get_animes():
     anime = database.mongo.db.anime.find()
     response = json_util.dumps(anime)
@@ -31,29 +34,25 @@ def get_anime(id):
     response = json_util.dumps(anime)
     return Response(response, mimetype='application/json')
 
+@app.route('/signup', methods=['GET','POST'])
+def signup():
 
+    form = forms.Signup()    
 
-@app.route('/users', methods=['POST'])
-def create_user():
-    
-    username = request.form['username']
-    email = request.form['email']
-    password = request.form['password']
-    
-    if username and email and password:
+    if form.validate_on_submit():
+
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data     
+
         hashed_password = generate_password_hash(password)
         id = database.mongo.db.users.insert(
             {'username':username, 'email': email, 'password': hashed_password }
         )
-        response = {
-            'id': str(id),
-            'username': username,
-            'email': email,
-            'password': hashed_password
-        }
-        return response
-    else:
-        return 'Todos los campos son reequeridos'
+        return 'Registrado con exito.'
+        
+    return render_template('signup.html', form = form)
+
 
 @app.route('/login')
 def login():
@@ -68,12 +67,6 @@ def not_found(error=None):
     response.status_code = 404
     return response
 
-
-
-@app.route('/signup', methods = ['GET','POST'])
-def signup():
-
-    return render_template('signup.html')
 
 
 if __name__ == '__main__':
