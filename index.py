@@ -4,6 +4,7 @@ import database
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson import json_util
 from bson.objectid import ObjectId
+import json
 
 app = Flask(__name__)
 
@@ -11,11 +12,12 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/video')
+@app.route('/video', methods = ['GET'])
 def video():
-    anime = db_format.anime[0]
-    return render_template('video.html', anime = anime)
 
+    cards = database.mongo.db.anime.find()
+    
+    return render_template('video.html', cards = cards)
 
 @app.route('/anime', methods=['GET'])
 def get_animes():
@@ -34,9 +36,10 @@ def get_anime(id):
 
 @app.route('/users', methods=['POST'])
 def create_user():
-    username = request.json['username']
-    email = request.json['email']
-    password = request.json['password']
+    
+    username = request.form['username']
+    email = request.form['email']
+    password = request.form['password']
     
     if username and email and password:
         hashed_password = generate_password_hash(password)
@@ -51,7 +54,7 @@ def create_user():
         }
         return response
     else:
-        return not_found()
+        return 'Todos los campos son reequeridos'
 
 @app.route('/login')
 def login():
@@ -65,6 +68,13 @@ def not_found(error=None):
     })
     response.status_code = 404
     return response
+
+
+
+@app.route('/signup', methods = ['GET','POST'])
+def signup():
+
+    return render_template('signup.html')
 
 
 if __name__ == '__main__':

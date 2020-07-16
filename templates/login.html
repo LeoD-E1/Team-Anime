@@ -8,8 +8,10 @@
 <body>
 	<div class="bg-img"></div>
 	<div class="login-box">
+
 		<a href="{{ url_for('home')}}"><img class="avatar" src="{{url_for('static', filename='img/esfera.png')}}" alt="logo de esfera"></a>
 		<h1>Login</h1>
+
 		<form>
 			<label for="UserName">UserName</label>
 			<input type="text" placeholder="Enter Username" required="required">
@@ -20,7 +22,7 @@
 			<input type="submit" value="Login">
 
 		    <a href="#">¿Olvido su Contraseña?</a><br>
-		    <a href="">Registrarse</a>
+		    <a href="{{ url_for('signup')}}">Registrarse</a>
 		</form>
 		
 	</div>

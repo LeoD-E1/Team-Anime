@@ -21,23 +21,34 @@
         </video>
       </div>
     </div>
+
+    
     <div class="col-md-4 cap-list">
-      <a href="#">
-        <div class="card mb-3">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="{{ anime['img'] }}" class="card-img" alt="..." />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{ anime['title'] }}</h5>
-                <p>{{ anime['description']}}</p>
+      {% for card in cards %}
+
+        <a href="#">
+          <div class="card mb-3">
+            <div class="row no-gutters">
+
+              <div class="col-md-4">
+                <img src="{{ card['img'] }}" class="card-img" alt="..." />
               </div>
+
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ card['title'] }}</h5>
+                  <p>{{ card['description']}}</p>
+                </div>
+              </div>
+
             </div>
           </div>
-        </div>
-      </a>
+        </a>
+
+      {% endfor %}
     </div>
+    
+
   </div>
 </div>
 {% endblock %}
