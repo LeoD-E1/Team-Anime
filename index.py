@@ -16,7 +16,6 @@ def home():
 def video():
 
     cards = database.mongo.db.anime.find()
-    
     return render_template('video.html', cards = cards)
 
 @app.route('/anime', methods=['GET'])
