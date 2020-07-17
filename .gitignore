@@ -1,2 +1,4 @@
 anime/
 .env
+*_pycache_
+*.pyc
