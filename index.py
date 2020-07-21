@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, Response, redirect
+from flask.ext.bcrypt import Bcrypt
 from templates import db_format, forms
 import database
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -9,6 +10,7 @@ import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'x\x02\x02\xc7\xbdAS\xd3\x02\xac{\xec\xa5\xffA\xb1g\xe57k\x80\x0c\x80\xc7\xf4K\x8b\xbe\xf4\x08\x98\xf9'
+bcrypt = Bcrypt(app)
 
 @app.route('/', methods=['GET']) 
 def home():
@@ -44,19 +46,42 @@ def signup():
         username = form.username.data
         email = form.email.data
         password = form.password.data     
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
-        hashed_password = generate_password_hash(password)
-        id = database.mongo.db.users.insert(
-            {'username':username, 'email': email, 'password': hashed_password }
-        )
-        return 'Registrado con exito.'
+        loged_user = database.mongo.db.users.find_one({'username': username})
+        loged_email = database.mongo.db.users.find_one({'email': email})
+        
+        if loged_user:
+            return 'El nombre de usuario elegido ya esta en uso.'
+        elif loged_email:
+            return 'Ya se registro una cuenta de TeamAnime asociada a este mail'
+        else:
+            id = database.mongo.db.users.insert(
+                {'username':username, 'email': email, 'password': hashed_password }
+            )
+            return 'Registrado con exito.'
         
     return render_template('signup.html', form = form)
 
-
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+
+    form = forms.Login()
+
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+        find_user = database.mongo.db.users.find_one({'username': username})
+
+        if find_user:
+            checked_password = bcrypt.check_password_hash(find_user['password'], password)
+            if checked_password:
+                return 'usuario correcto'
+            else:
+                'contraseña incorrecta'
+        else:
+            return 'usuario inexistente'
+    return render_template('login.html', form = form)
 
 @app.errorhandler(404)
 def not_found(error=None):
@@ -66,8 +91,6 @@ def not_found(error=None):
     })
     response.status_code = 404
     return response
-
-
 
 if __name__ == '__main__':
     app.run(debug = True)

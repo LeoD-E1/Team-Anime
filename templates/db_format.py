@@ -13,39 +13,9 @@ anime = [
                 "number": 2,
                 'img':'static/img/dbduper.jpg',
                 "url": 'static/anime/02.mp4',
-                "viewed": "no"},
-
-                {"anime": "Highschool of the dead",
-                "number": 3,
-                "img": 'static/img/hotd.jpg',
-                "url": 'static/anime/03.mp4',
-                "viewed": "no"},
-
-                {"anime": "Highschool of the dead",
-                "number": 4,
-                "img": 'static/img/hotd.jpg',
-                "url": 'static/anime/04.mp4',
-                "viewed": "no"},
-
-                {"anime": "Highschool of the dead",
-                "number": 5,
-                "img": 'static/img/hotd.jpg',
-                "url": 'static/anime/05.mp4',
-                "viewed": "no"},
-
-                {"anime": "Highschool of the dead",
-                "number": 6,
-                "img": 'static/img/hotd.jpg',
-                "url": 'static/anime/06.mp4',
-                "viewed": "no"},
-
-                {"anime": "Highschool of the dead",
-                "number": 7,
-                "img": 'static/img/hotd.jpg',
-                "url": 'static/anime/07.mp4',
                 "viewed": "no"}],
-
     "img":'static/img/hotd.jpg',
+    "url": '',
     "punctuation":'4,2'
     },
     

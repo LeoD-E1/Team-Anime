@@ -12,14 +12,13 @@
 		<a href="{{ url_for('home')}}"><img class="avatar" src="{{url_for('static', filename='img/esfera.png')}}" alt="logo de esfera"></a>
 		<h1>Login</h1>
 
-		<form>
+		<form action="{{ url_for('login')}}" method="post" novalidate>
+			{{ form.hidden_tag() }}
 			<label for="UserName">UserName</label>
-			<input type="text" placeholder="Enter Username" required="required">
-
-            <label for="Passord">Password</label>
-			<input type="Password" placeholder="Enter Password" required="required">
-
-			<input type="submit" value="Login">
+			{{ form.username }}
+			<label for="Passord">Password</label>
+			{{ form.password }}
+			{{form.submit}}
 
 		    <a href="#">¿Olvido su Contraseña?</a><br>
 		    <a href="{{ url_for('signup')}}">Registrarse</a>
