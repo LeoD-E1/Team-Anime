@@ -1,7 +1,8 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: url(../img/1.jpg) no-repeat center top;
+	background: url('../img/date.jpg');
+	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: sans-serif;
 	height: 100vh;

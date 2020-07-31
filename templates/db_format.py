@@ -5,7 +5,7 @@ anime = [
     "description": "Apocalipsis Zombies",
     "chapters":[{"anime": "Highschool of the dead",
                 "number": 1,
-                "img": 'static/img/hotd.jpg',
+                "img": 'img/hotd.jpg',
                 "url": 'static/anime/01.mp4',
                 "viewed": "no"},
 
@@ -14,7 +14,7 @@ anime = [
                 'img':'static/img/dbduper.jpg',
                 "url": 'static/anime/02.mp4',
                 "viewed": "no"}],
-    "img":'static/img/hotd.jpg',
+    "img":'img/hotd.jpg',
     "url": '',
     "punctuation":'4,2'
     },
@@ -32,7 +32,7 @@ anime = [
                 "img": 'static/img/dbsuper.jpg',
                 "url": 'static/anime/02.mp4',
                 "viewed": "no"}],
-    "img":'static/img/dbsuper.jpg',
+    "img":'img/dbsuper.jpg',
     "punctuation":'4,2'
     },
     
@@ -49,7 +49,7 @@ anime = [
                 "img": 'static/img/dbsuper.jpg',
                 "url": 'static/anime/High School Of The Dead/02.mp4',
                 "viewed": "no"}],
-    "img":'static/img/clannad.jpg',
+    "img":'img/clannad.jpg',
     "punctuation":'4,5'},
     
     {"title":"Angel Beats",
@@ -65,7 +65,7 @@ anime = [
                 "img": 'static/img/angel.jpg',
                 "url": 'static/anime/High School Of The Dead/02.mp4',
                 "viewed": "no"}],
-    "img":'static/img/angel.jpg',
+    "img":'img/angel.jpg',
     "punctuation":'4,7'}]
 
 users = {

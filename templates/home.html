@@ -1,19 +1,27 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} {% block content %} {% include
+'components/slider.html' %}
 
-<!-- row -->
-<div class="row" id="content">
-    <!-- single course -->
+<div class="container">
+  <!-- row -->
+  <div class="row mt-3 mb-3">
     {% for card in cards %}
-        <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="course">
-                <a href="#" class="course-img">
-                    <img src="{{ card['img']}}">
-                </a>
-                <a class="course-title" href="#">{{ card['title']}}</a>
-            </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+      <a href="{{card['url']}}">
+        <div class="box">
+          <img
+            src="{{url_for('static', filename=card['img']) }}"
+            class="image"
+          />
+          <div class="title">
+            <h5>{{card['title']}}</h5>
+          </div>
+          <div class="overlay">
+            <div class="text">{{card['description']}}</div>
+          </div>
         </div>
+      </a>
+    </div>
     {% endfor %}
-    <!-- /single course -->
+  </div>
 </div>
-
 {% endblock %}
