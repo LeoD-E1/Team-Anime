@@ -1,52 +1,48 @@
-{% extends 'layout.html' %} {% block title %} Sign up{% endblock %} {% block content %}
+{% extends 'layout.html' %}
+<!------separate------>
+{% block title %} Registro | Team Anime{% endblock %} 
+<!------separate------>
+{% block css %} <link rel="stylesheet" href="{{url_for('static', filename='css/signup.css')}}">{% endblock %}
+<!------separate------>
+{% block content %}
+<!------separate------>
 
-<div><a href="{{ url_for('home')}}">inicio</a></div><br>
+<div class="container">
+  <div style="margin-top: 20px;"><a href="{{ url_for('home')}}">inicio</a></div>
+  <br />
 
-<form action="{{ url_for('signup')}}" method="post" novalidate>
+  <form action="{{ url_for('signup')}}" method="post" novalidate>
     {{ form.hidden_tag() }}
 
-    <div>    
-        <div class="col-md-1">
-            {{ form.username.label }}
-        </div>
-        <div class="col-md-3">
-            {{ form.username }}
-        </div>
-        {% for error in form.username.errors %}
-        <span style="color: red;">{{ error }}</span>
-        {% endfor %}
+    <div>
+        {{ form.username.label }} <br>
+        {{ form.username }}
+      {% for error in form.username.errors %}
+      <span style="color: red;">{{ error }}</span>
+      {% endfor %}
     </div>
 
     <div>
-        <div class="col-md-4">
-            {{ form.email.label }}
-        </div>
-        <div class="col-md-8">
-            {{ form.email }}
-        </div>
-        {% for error in form.email.errors %}
-        <span style="color: red;">{{ error }}</span>
-        {% endfor %}
+        {{ form.email.label }} <br>
+        {{ form.email }}
+      {% for error in form.email.errors %}
+      <span style="color: red;">{{ error }}</span>
+      {% endfor %}
     </div>
-    
-    <div>
-        <div class="col-md-4">
-            {{ form.password.label }}
-        </div>
-        <div class="col-md-8">
-            {{ form.password }}
-        </div>
-        {% for error in form.password.errors %}
-        <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-    </div><br>
 
     <div>
-        {{form.submit}}
+        {{ form.password.label }} <br>
+        {{ form.password }}
+      {% for error in form.password.errors %}
+      <span style="color: red;">{{ error }}</span>
+      {% endfor %}
+    <br/><br>
+    <div>
+      {{form.submit}}
     </div>
-</form><br>
+  </form>
+  <br />
 
-<div>do you have a account?<a href="{{ url_for('login')}}">Log in</a></div>
-
-
+  <div>¿Ya tenés una cuenta? <a href="{{ url_for('login')}}">Inicia sesión</a></div>
+</div>
 {% endblock %}

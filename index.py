@@ -13,7 +13,6 @@ app.config[
 ] = "x\x02\x02\xc7\xbdAS\xd3\x02\xac{\xec\xa5\xffA\xb1g\xe57k\x80\x0c\x80\xc7\xf4K\x8b\xbe\xf4\x08\x98\xf9"
 bcrypt = Bcrypt(app)
 
-
 @app.route("/", methods=["GET"])
 def home():
     cards = database.mongo.db.anime.find()    
@@ -24,7 +23,6 @@ def video():
 
     cards = database.mongo.db.anime.find()
     return render_template("video.html", cards=cards)
-
 
 @app.route("/animes", methods=["GET"])
 def get_animes():
