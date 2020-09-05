@@ -1,18 +1,19 @@
-{% extends "layout.html" %} {% block content %} {% include
-'components/slider.html' %}
+{% extends "layout.html" %} {% block content %} 
 <div class="container">
+  {% include 'components/slider.html' %}
   <!-- row -->
   <div class="row mt-3 mb-3">
     {% for card in cards %}
 
-      <div class="card" style="width: 18rem;">
+      <div class="card text-center m-3" style="width: 18rem;">
         <img src="{{url_for('static', filename=card['img']) }}" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title"><a href="{{card['url']}}">{{card['title']}}</h5>
           <p class="card-text">{{card['description']}}</p>
-          <a href="{{card['url']}}" class="btn btn-outline-primary">Go somewhere</a>
+          <a href="{{card['url']}}" class="btn btn-outline-dark">Ver</a>
         </div>
       </div>
+       
     {% endfor %}
   </div>
 </div>
