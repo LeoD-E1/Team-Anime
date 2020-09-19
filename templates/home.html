@@ -7,15 +7,15 @@
 
       <div class="card text-center m-3" style="width: 18rem;">
         <img src="{{url_for('static', filename=card['img']) }}" class="card-img-top">
-        <div class="card-body">
+        
           <h5 class="card-title"><a href="{{card['url']}}">{{card['title']}}</h5>
           <p class="card-text">{{card['description']}}</p>
-          <a href="{{card['url']}}" class="btn btn-outline-dark">Ver</a>
-        </div>
+        
       </div>
        
     {% endfor %}
   </div>
+  
 </div>
 
 {% endblock %}

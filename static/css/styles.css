@@ -1,3 +1,7 @@
+.card img{
+  max-height: 370px;
+}
+
 body {
   overflow-x: hidden;
 }
@@ -52,9 +56,10 @@ body {
 }
 
 .slider-container img {
-  max-height: 90vh;
-  background-position: center;
+  max-height: 500px;
+  background-size: cover;
   background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .box {
