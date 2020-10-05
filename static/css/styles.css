@@ -1,10 +1,22 @@
 .card img {
   max-height: 270px;
   max-width: 210px;
+} 
+
+.main{
+  height: 50vh;
+  position: absolute;
+  z-index: 99;
+  background-color: #fff;
+  width: 100%;
 }
-.card{ transition: all 250ms ease-in;}
-.card:hover{
-  box-shadow: 0px 10px 10px -6px black;
+
+.card {
+  transition: all 250ms ease-in;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 body {
@@ -15,7 +27,6 @@ body {
   width: 100%;
   position: fixed;
   z-index: 9;
-  
 }
 
 .section {
@@ -23,14 +34,13 @@ body {
   padding-bottom: 40px;
 }
 
-#nav{
+#nav {
   position: fixed;
   width: 50%;
   margin-left: 25%;
-  
 }
 
-#logo{
+#logo {
   padding: 10px;
   text-align: center;
   position: fixed;
